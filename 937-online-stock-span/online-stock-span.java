@@ -1,20 +1,17 @@
 import java.util.*;
 
-class StockSpanner 
-{
-    private Deque<int[]> stack;
+class StockSpanner {
 
-    public StockSpanner()
-    {
-        stack = new ArrayDeque<>();
+    private Stack<int[]> stack; // {price, span}
+
+    public StockSpanner() {
+        stack = new Stack<>();
     }
 
-    public int next(int price)
-    {
+    public int next(int price) {
         int span = 1;
 
-        while (!stack.isEmpty() && stack.peek()[0] <= price)
-        {
+        while (!stack.isEmpty() && stack.peek()[0] <= price) {
             span += stack.pop()[1];
         }
 
